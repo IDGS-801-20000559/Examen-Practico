@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content%}
+<div class="container">
+    <form name="sent" action="/delete-bike?id={{bike.id}}" id="form1" method="POST">
+        <div class="row control-group">
+            <center>
+                <div class="form-group col-xs-12 float-label-form-group controls">
+                    <h2 class="title" style="background-color: goldenrod;">¿De verdad deseas eliminar este registro?</h2>
+                    <br>
+                    <center>
+                        <div class="card" style="width:15rem;">
+                            {% if bike.tipo == 1 %}
+                            <img src="../static/img/mountain-bike.png" class="card-img-top" alt="...">
+                            {% elif bike.tipo == 2 %}
+                            <img src="../static/img/turism-bike.png" class="card-img-top" alt="...">
+                            {% elif bike.tipo == 3 %}
+                            <img src="../static/img/urban-bike.png" class="card-img-top" alt="...">
+                            {% else %}
+                            <img src="../static/img/bike-gogo-mini.png" class="card-img-top" alt="...">
+                            {% endif %}
+                            <div class="card-body" style="background-color:seashell;">
+                              <h5 class="card-title h3 text-uppercase"><b>{{bike.nombre}}</b></h5>
+                              <p class="card-text">{{bike.descripcion}}</p>
+                              <p class="card-text text-success">$ {{bike.precio}}</p>
+                            </div>
+                          </div>
+                    </center>
+                </div>
+            </center>
+        </div>
+        <center>
+            <input type="submit" class="btn btn-primary" id="eliminar" name="eliminar" value="Sí, eliminar" />
+            <a href="moduloBici" class="btn btn-danger">
+                No, cancelar
+            </a>
+        </center>
+    </form>
+    {% endblock %}

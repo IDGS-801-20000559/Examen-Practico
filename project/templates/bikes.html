@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+<h1 class="title" style="background-color: goldenrod;">Estas son tus publicaciones </h1>
+</center>
+<br>
+<a href="{{ url_for('bikes.insertarBici') }}" class="btn btn-success"> Agregar &plus;</a>
+<br><br>
+<div id="mi_div" class="row">
+  {% for bike in bikes %}
+  {% if current_user.is_authenticated %}
+  {% if current_user.id == bike.idUsuario %}
+  <div class="card" style="width:15rem;">
+    {% if bike.tipo == 1 %}
+    <img src="../static/img/mountain-bike.png" class="card-img-top" alt="...">
+    {% elif bike.tipo == 2 %}
+    <img src="../static/img/turism-bike.png" class="card-img-top" alt="...">
+    {% elif bike.tipo == 3 %}
+    <img src="../static/img/urban-bike.png" class="card-img-top" alt="...">
+    {% else %}
+    <img src="../static/img/bike-gogo-mini.png" class="card-img-top" alt="...">
+    {% endif %}
+    <div class="card-body" style="background-color:seashell;">
+      <h5 class="card-title h3 text-uppercase"><b>{{bike.nombre}}</b></h5>
+      <p class="card-text">{{bike.descripcion}}</p>
+      <p class="card-text text-success">$ {{bike.precio}}</p>
+      <a href="update-bike?id={{bike.id}}" class="btn btn-warning text-white">Modificar &updownarrow;</a>
+      <a href="delete-bike?id={{bike.id}}" class="btn btn-danger text-white">Eliminar </a>
+    </div>
+  </div>
+  {% endif %}
+  {% endif %}
+  {%endfor%}
+</div>
+
+<script>
+    var miDiv = document.getElementById("mi_div");
+    if(miDiv.innerHTML.trim() == ""){
+      miDiv.innerHTML = '<center><h1 class="title text-info col-5" style="background-color:white;">'+
+                        'Aun no haz hecho publicaciones </h1></center>'
+    }
+</script>
+{% endblock %}

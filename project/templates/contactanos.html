@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1 class="title" style="background-color: goldenrod;">Contacto</h1>
+<div class="box">
+    <div class="box">
+        <form action="" method="POST">
+            <div class="field">
+                <div class="control">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre y apellidos" required>
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" name="correo" id="correo" placeholder="alguien@example.com" required>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="asunto">Asunto:</label>
+                    <input class="input" type="text" name="asunto" id="asunto" required>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea class="input is-large" type="text" name="mensaje" id="mensaje" rows="5" required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Enviar</button>
+        </form>
+        <br>
+        <p>En BikeGogo nos gusta escuchar tu opinión.</p>
+        <p>Dejanos tus datos y nos pondremos en contacto</p>
+    </div>
+</div>
+{% endblock %}
